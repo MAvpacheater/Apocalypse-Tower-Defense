@@ -77,34 +77,64 @@
     },
     "members": {
       "member1": {
-        "name": "Alexander",
+        "name": "𝓩𝓸𝓪𝓰",
         "role": "Lead Developer",
-        "description": "Lead game developer. Responsible for architecture and core gameplay."
+        "description": "Responsible for the game architecture and core gameplay."
       },
       "member2": {
-        "name": "Maria",
-        "role": "Game Designer",
-        "description": "Game designer. Creates balance and unique mechanics."
+        "name": "Mr Dep Dodep",
+        "role": "Site Developer",
+        "description": "Website designer. Creates new pages and unique mechanics."
       },
       "member3": {
-        "name": "Dmitry",
+        "name": "Мистер Медовик | PRIDE",
         "role": "3D Artist",
-        "description": "3D artist. Models towers, zombies and all game objects."
+        "description": "Creative manager. Comes up with updates and new ideas for the game."
       },
       "member4": {
-        "name": "Anna",
-        "role": "QA Tester",
-        "description": "Tester. Finds bugs and improves game quality."
+        "name": "...",
+        "role": "Marketing Manager",
+        "description": "Promotes the game and attracts new players."
       },
       "member5": {
-        "name": "Igor",
+        "name": "🧑‍🦽 🚓",
         "role": "Marketing Manager",
-        "description": "Marketer. Promotes the game and attracts new players."
+        "description": "Promotes the game and attracts new players."
       },
       "member6": {
-        "name": "Sophia",
-        "role": "Community Manager",
-        "description": "Community manager. Communicates with players and collects feedback."
+        "name": ".........СМЕРТЬ........",
+        "role": "Marketing Manager",
+        "description": "Promotes the game and attracts new players."
+      },
+      "member7": {
+        "name": "Ferdinand",
+        "role": "Marketing Manager",
+        "description": "Promotes the game and attracts new players."
+      },
+      "member8": {
+        "name": "𝒟𝒶𝓇𝓉𝒽'𝓈 𝒷𝓇𝑜𝓉𝒽𝑒𝓇",
+        "role": "Marketing Manager",
+        "description": "Promotes the game and attracts new players."
+      },
+      "member9": {
+        "name": "jask_wantse",
+        "role": "Marketing Manager",
+        "description": "Promotes the game and attracts new players."
+      },
+      "member10": {
+        "name": "Dolphy",
+        "role": "QA Tester",
+        "description": "Finds bugs and improves overall game quality."
+      },
+      "member11": {
+        "name": "Never|Гарант|30 reviews",
+        "role": "QA Tester",
+        "description": "Tests the game for bugs and ensures stability."
+      },
+      "member12": {
+        "name": "Стас (266 pryfs) (garant)s",
+        "role": "Builder",
+        "description": "Builds worlds and environments inside the game."
       }
     }
   },
