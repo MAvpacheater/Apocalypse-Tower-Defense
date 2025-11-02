@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tower Defense Zombie | Roblox Game</title>
-    <link rel="stylesheet" href="src/main.css">
+    <link rel="stylesheet" href="src/css/main.css">
+    <link rel="stylesheet" href="src/css/theme.css">
+    <link rel="stylesheet" href="src/css/i18n.css">
 </head>
 <body>
     <header class="header">
@@ -12,15 +14,42 @@
             <div class="header-content">
                 <div class="logo">
                     <span class="logo-icon">🧟</span>
-                    <span class="logo-text">TOWER DEFENSE ZOMBIE</span>
+                    <span class="logo-text" data-i18n="logo">TOWER DEFENSE ZOMBIE</span>
                 </div>
                 <nav class="nav">
-                    <a href="#home" class="nav-link">Головна</a>
-                    <a href="#features" class="nav-link">Особливості</a>
-                    <a href="#gameplay" class="nav-link">Геймплей</a>
-                    <a href="#updates" class="nav-link">Оновлення</a>
+                    <a href="#home" class="nav-link" data-i18n="nav.home">Головна</a>
+                    <a href="#features" class="nav-link" data-i18n="nav.features">Особливості</a>
+                    <a href="#gameplay" class="nav-link" data-i18n="nav.gameplay">Геймплей</a>
+                    <a href="#updates" class="nav-link" data-i18n="nav.updates">Оновлення</a>
                 </nav>
-                <a href="https://www.roblox.com" class="btn-play">Грати зараз</a>
+                <div class="header-controls">
+                    <div class="theme-switcher">
+                        <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
+                            <span class="theme-icon">🌙</span>
+                        </button>
+                    </div>
+                    <div class="language-switcher">
+                        <button class="lang-btn" id="langToggle">
+                            <span class="lang-icon">🌐</span>
+                            <span class="lang-text" id="currentLang">UK</span>
+                        </button>
+                        <div class="lang-dropdown" id="langDropdown">
+                            <button class="lang-option" data-lang="uk">
+                                <span class="flag">🇺🇦</span>
+                                <span>Українська</span>
+                            </button>
+                            <button class="lang-option" data-lang="en">
+                                <span class="flag">🇬🇧</span>
+                                <span>English</span>
+                            </button>
+                            <button class="lang-option" data-lang="ru">
+                                <span class="flag">🇷🇺</span>
+                                <span>Русский</span>
+                            </button>
+                        </div>
+                    </div>
+                    <a href="https://www.roblox.com" class="btn-play" data-i18n="header.play">Грати зараз</a>
+                </div>
             </div>
         </div>
     </header>
@@ -31,33 +60,33 @@
             <div class="container">
                 <div class="hero-content">
                     <h1 class="hero-title">
-                        <span class="gradient-text">TOWER DEFENSE</span>
-                        <span class="zombie-text">ZOMBIE</span>
+                        <span class="gradient-text" data-i18n="hero.title1">TOWER DEFENSE</span>
+                        <span class="zombie-text" data-i18n="hero.title2">ZOMBIE</span>
                     </h1>
-                    <p class="hero-description">
+                    <p class="hero-description" data-i18n="hero.description">
                         Захищай свою базу від нескінченних хвиль зомбі.<br>
                         Будуй вежі, покращуй захист та стань легендою!
                     </p>
                     <div class="hero-buttons">
                         <a href="https://www.roblox.com" class="btn btn-primary">
-                            <span>🎮 Почати гру</span>
+                            <span data-i18n="hero.playBtn">🎮 Почати гру</span>
                         </a>
                         <a href="#features" class="btn btn-secondary">
-                            <span>Дізнатись більше</span>
+                            <span data-i18n="hero.learnBtn">Дізнатись більше</span>
                         </a>
                     </div>
                     <div class="hero-stats">
                         <div class="stat-item">
                             <div class="stat-number">50K+</div>
-                            <div class="stat-label">Гравців</div>
+                            <div class="stat-label" data-i18n="hero.stats.players">Гравців</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">100+</div>
-                            <div class="stat-label">Вежі</div>
+                            <div class="stat-label" data-i18n="hero.stats.towers">Вежі</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">50+</div>
-                            <div class="stat-label">Зомбі</div>
+                            <div class="stat-label" data-i18n="hero.stats.zombies">Зомбі</div>
                         </div>
                     </div>
                 </div>
@@ -67,39 +96,39 @@
         <section class="features" id="features">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Особливості гри</h2>
-                    <p class="section-subtitle">Унікальний геймплей та нескінченні можливості</p>
+                    <h2 class="section-title" data-i18n="features.title">Особливості гри</h2>
+                    <p class="section-subtitle" data-i18n="features.subtitle">Унікальний геймплей та нескінченні можливості</p>
                 </div>
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">🏰</div>
-                        <h3 class="feature-title">Епічні вежі</h3>
-                        <p class="feature-text">Більше 100 унікальних вежів з різними здібностями та покращеннями</p>
+                        <h3 class="feature-title" data-i18n="features.towers.title">Епічні вежі</h3>
+                        <p class="feature-text" data-i18n="features.towers.text">Більше 100 унікальних вежів з різними здібностями та покращеннями</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🧟‍♂️</div>
-                        <h3 class="feature-title">Різні зомбі</h3>
-                        <p class="feature-text">50+ типів зомбі з унікальними атаками та можливостями</p>
+                        <h3 class="feature-title" data-i18n="features.zombies.title">Різні зомбі</h3>
+                        <p class="feature-text" data-i18n="features.zombies.text">50+ типів зомбі з унікальними атаками та можливостями</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">⚡</div>
-                        <h3 class="feature-title">Потужні здібності</h3>
-                        <p class="feature-text">Використовуй спеціальні скіли для знищення ворогів</p>
+                        <h3 class="feature-title" data-i18n="features.abilities.title">Потужні здібності</h3>
+                        <p class="feature-text" data-i18n="features.abilities.text">Використовуй спеціальні скіли для знищення ворогів</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">👥</div>
-                        <h3 class="feature-title">Кооператив</h3>
-                        <p class="feature-text">Грай з друзями до 4 гравців одночасно</p>
+                        <h3 class="feature-title" data-i18n="features.coop.title">Кооператив</h3>
+                        <p class="feature-text" data-i18n="features.coop.text">Грай з друзями до 4 гравців одночасно</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🏆</div>
-                        <h3 class="feature-title">Рейтинги</h3>
-                        <p class="feature-text">Змагайся за перше місце в глобальній таблиці лідерів</p>
+                        <h3 class="feature-title" data-i18n="features.rankings.title">Рейтинги</h3>
+                        <p class="feature-text" data-i18n="features.rankings.text">Змагайся за перше місце в глобальній таблиці лідерів</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🎯</div>
-                        <h3 class="feature-title">Місії</h3>
-                        <p class="feature-text">Виконуй щоденні завдання та отримуй винагороди</p>
+                        <h3 class="feature-title" data-i18n="features.missions.title">Місії</h3>
+                        <p class="feature-text" data-i18n="features.missions.text">Виконуй щоденні завдання та отримуй винагороди</p>
                     </div>
                 </div>
             </div>
@@ -109,21 +138,21 @@
             <div class="container">
                 <div class="gameplay-content">
                     <div class="gameplay-text">
-                        <h2 class="section-title">Захоплюючий геймплей</h2>
-                        <p class="gameplay-description">
+                        <h2 class="section-title" data-i18n="gameplay.title">Захоплюючий геймплей</h2>
+                        <p class="gameplay-description" data-i18n="gameplay.description">
                             Tower Defense Zombie - це стратегічна гра, де ти маєш захищати свою базу від нескінченних хвиль зомбі. Будуй вежі, покращуй їх та використовуй тактику для перемоги!
                         </p>
                         <ul class="gameplay-list">
-                            <li>✓ Понад 50 унікальних рівнів</li>
-                            <li>✓ Різні режими складності</li>
-                            <li>✓ Система прогресії та покращень</li>
-                            <li>✓ Регулярні оновлення контенту</li>
+                            <li data-i18n="gameplay.list.item1">✓ Понад 50 унікальних рівнів</li>
+                            <li data-i18n="gameplay.list.item2">✓ Різні режими складності</li>
+                            <li data-i18n="gameplay.list.item3">✓ Система прогресії та покращень</li>
+                            <li data-i18n="gameplay.list.item4">✓ Регулярні оновлення контенту</li>
                         </ul>
                     </div>
                     <div class="gameplay-image">
                         <div class="gameplay-placeholder">
                             <span class="placeholder-icon">🎮</span>
-                            <p>Ігровий процес</p>
+                            <p data-i18n="gameplay.placeholder">Ігровий процес</p>
                         </div>
                     </div>
                 </div>
@@ -133,10 +162,10 @@
         <section class="cta-section">
             <div class="container">
                 <div class="cta-content">
-                    <h2 class="cta-title">Готовий почати битву?</h2>
-                    <p class="cta-text">Приєднуйся до тисяч гравців та стань легендарним захисником!</p>
-                    <a href="https://www.roblox.com" class="btn btn-primary btn-large">
-                        <span>🎮 Грати зараз на Roblox</span>
+                    <h2 class="cta-title" data-i18n="cta.title">Готовий почати битву?</h2>
+                    <p class="cta-text" data-i18n="cta.text">Приєднуйся до тисяч гравців та стань легендарним захисником!</p>
+                    <a href="https://t.me/c/3279414960/838" class="btn btn-primary btn-large">
+                        <span data-i18n="cta.button">🎮 Грати зараз на Roblox</span>
                     </a>
                 </div>
             </div>
@@ -149,19 +178,21 @@
                 <div class="footer-info">
                     <div class="footer-logo">
                         <span class="logo-icon">🧟</span>
-                        <span class="logo-text">TOWER DEFENSE ZOMBIE</span>
+                        <span class="logo-text" data-i18n="logo">TOWER DEFENSE ZOMBIE</span>
                     </div>
-                    <p class="footer-text">© 2025 Tower Defense Zombie. Roblox Game</p>
+                    <p class="footer-text" data-i18n="footer.copyright">© 2025 Tower Defense Zombie. Roblox Game</p>
                 </div>
                 <div class="footer-links">
-                    <a href="#" class="footer-link">Політика конфіденційності</a>
-                    <a href="#" class="footer-link">Умови використання</a>
-                    <a href="#" class="footer-link">Підтримка</a>
+                    <a href="#" class="footer-link" data-i18n="footer.privacy">Політика конфіденційності</a>
+                    <a href="#" class="footer-link" data-i18n="footer.terms">Умови використання</a>
+                    <a href="#" class="footer-link" data-i18n="footer.support">Підтримка</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="src/main.js"></script>
+    <script src="src/js/i18n.js"></script>
+    <script src="src/js/theme.js"></script>
+    <script src="src/js/main.js"></script>
 </body>
 </html>
