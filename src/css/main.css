@@ -378,6 +378,118 @@ body {
     font-size: 4rem;
 }
 
+/* ===== TEAM SECTION ===== */
+.team-section {
+    padding: var(--spacing-xl) 0;
+    background: var(--color-bg-secondary);
+}
+
+.team-recruitment {
+    margin-bottom: var(--spacing-lg);
+}
+
+.recruitment-card {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(249, 115, 22, 0.1));
+    border: 2px solid var(--color-accent);
+    border-radius: 20px;
+    padding: var(--spacing-lg);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.recruitment-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.recruitment-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-sm);
+    background: linear-gradient(135deg, var(--color-accent), #f97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.recruitment-text {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.team-card {
+    background: var(--color-bg-tertiary);
+    padding: var(--spacing-md);
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+    text-align: center;
+    transition: all var(--transition-normal);
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-accent);
+    box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+}
+
+.team-avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto var(--spacing-sm);
+    border-radius: 50%;
+    background: var(--color-bg-secondary);
+    border: 3px solid var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+
+.team-card:hover .team-avatar {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
+}
+
+.avatar-placeholder {
+    font-size: 3rem;
+    opacity: 0.5;
+}
+
+.team-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xs);
+}
+
+.team-role {
+    font-size: 1rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.team-description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    font-size: 0.9375rem;
+}
+
 /* ===== CTA SECTION ===== */
 .cta-section {
     padding: var(--spacing-xl) 0;
@@ -469,5 +581,13 @@ body {
     
     .btn-play::after {
         content: '🎮';
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .recruitment-card {
+        padding: var(--spacing-md);
     }
 }
