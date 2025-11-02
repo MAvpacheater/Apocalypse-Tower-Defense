@@ -488,6 +488,28 @@ body {
     color: var(--color-text-secondary);
     line-height: 1.6;
     font-size: 0.9375rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.team-contact-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.25rem;
+    background: linear-gradient(135deg, #0088cc, #229ED9);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: all var(--transition-normal);
+    margin-top: var(--spacing-xs);
+}
+
+.team-contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 136, 204, 0.4);
+    background: linear-gradient(135deg, #229ED9, #0088cc);
 }
 
 /* ===== CTA SECTION ===== */
