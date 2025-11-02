@@ -6,8 +6,38 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeaderScroll();
     initScrollAnimations();
     initMobileMenu();
+    initDevNotice();
+    animateStats();
+    initParallax();
+    initRippleEffect();
     logInitialization();
 });
+
+// ===== DEVELOPMENT NOTICE =====
+function initDevNotice() {
+    const notice = document.getElementById('devNotice');
+    const closeBtn = document.getElementById('closeNotice');
+    
+    if (!notice || !closeBtn) return;
+
+    // Check if notice was previously closed
+    const noticeClosed = localStorage.getItem('devNoticeClosed');
+    if (noticeClosed === 'true') {
+        notice.classList.add('hidden');
+    }
+
+    closeBtn.addEventListener('click', () => {
+        notice.classList.add('hidden');
+        localStorage.setItem('devNoticeClosed', 'true');
+    });
+
+    // Auto-fade after 10 seconds if not manually closed
+    setTimeout(() => {
+        if (!notice.classList.contains('hidden')) {
+            notice.style.opacity = '0.7';
+        }
+    }, 10000);
+}
 
 // ===== SMOOTH SCROLL =====
 function initSmoothScroll() {
@@ -49,16 +79,6 @@ function initHeaderScroll() {
             header.style.boxShadow = 'none';
         }
         
-        // Optional: Hide/show header on scroll
-        // Uncomment if you want this behavior
-        /*
-        if (currentScroll > lastScroll && currentScroll > 200) {
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            header.style.transform = 'translateY(0)';
-        }
-        */
-        
         lastScroll = currentScroll;
     });
 }
@@ -88,7 +108,7 @@ function initScrollAnimations() {
 
     // Observe elements
     const elementsToAnimate = document.querySelectorAll(
-        '.feature-card, .gameplay-content, .stat-item, .section-header'
+        '.feature-card, .gameplay-content, .stat-item, .section-header, .team-card'
     );
     
     elementsToAnimate.forEach(el => {
@@ -152,9 +172,6 @@ function animateValue(element) {
     }, duration / steps);
 }
 
-// Initialize stats animation
-animateStats();
-
 // ===== PARALLAX EFFECT FOR HERO =====
 function initParallax() {
     const hero = document.querySelector('.hero-content');
@@ -171,11 +188,9 @@ function initParallax() {
     });
 }
 
-initParallax();
-
 // ===== BUTTON RIPPLE EFFECT =====
 function initRippleEffect() {
-    const buttons = document.querySelectorAll('.btn, .btn-play, .theme-btn, .lang-btn');
+    const buttons = document.querySelectorAll('.btn:not(.btn-disabled), .theme-btn, .lang-btn, .team-contact-btn, .social-link');
     
     buttons.forEach(button => {
         button.addEventListener('click', function(e) {
@@ -219,23 +234,22 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-initRippleEffect();
-
 // ===== PAGE VISIBILITY =====
 document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
         document.title = '🧟 Come back to defend!';
     } else {
-        document.title = 'Tower Defense Zombie | Roblox Game';
+        document.title = 'Apocalypse Tower Defense | Roblox Game';
     }
 });
 
 // ===== LOGGING =====
 function logInitialization() {
-    console.log('%c🧟 Tower Defense Zombie', 'color: #dc2626; font-size: 20px; font-weight: bold;');
+    console.log('%c🧟 Apocalypse Tower Defense', 'color: #dc2626; font-size: 20px; font-weight: bold;');
     console.log('%cWebsite loaded successfully!', 'color: #22c55e; font-size: 14px;');
     console.log(`%cTheme: ${window.themeManager?.getCurrentTheme() || 'dark'}`, 'color: #9ca3af;');
     console.log(`%cLanguage: ${window.i18n?.getCurrentLanguage() || 'uk'}`, 'color: #9ca3af;');
+    console.log('%c⚠️ Game is in development mode', 'color: #f97316; font-size: 12px;');
 }
 
 // ===== EASTER EGG =====
@@ -302,9 +316,74 @@ if ('performance' in window) {
     });
 }
 
+// ===== DISABLED BUTTONS TOOLTIP =====
+document.querySelectorAll('.btn-disabled').forEach(btn => {
+    btn.addEventListener('mouseenter', function() {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'disabled-tooltip';
+        tooltip.textContent = window.i18n?.t('notice.text') || 'Game is in development!';
+        tooltip.style.cssText = `
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-bg-tertiary);
+            color: var(--color-text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            pointer-events: none;
+            animation: fadeIn 0.2s ease;
+        `;
+        
+        this.style.position = 'relative';
+        this.appendChild(tooltip);
+    });
+    
+    btn.addEventListener('mouseleave', function() {
+        const tooltip = this.querySelector('.disabled-tooltip');
+        if (tooltip) {
+            tooltip.style.animation = 'fadeOut 0.2s ease';
+            setTimeout(() => tooltip.remove(), 200);
+        }
+    });
+});
+
+// Add tooltip animations
+const tooltipStyle = document.createElement('style');
+tooltipStyle.textContent = `
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateX(-50%) translateY(5px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    }
+    
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(-50%) translateY(5px);
+        }
+    }
+`;
+document.head.appendChild(tooltipStyle);
+
 // Export functions for external use
 window.app = {
     animateStats,
     initParallax,
-    initSmoothScroll
+    initSmoothScroll,
+    initDevNotice
 };
