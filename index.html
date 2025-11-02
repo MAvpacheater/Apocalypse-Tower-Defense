@@ -24,6 +24,10 @@
                     <a href="#team" class="nav-link" data-i18n="nav.team">Команда</a>
                 </nav>
                 <div class="header-controls">
+                    <div class="soon-badge">
+                        <span class="soon-icon">🚀</span>
+                        <span class="soon-text" data-i18n="header.soon">Soon</span>
+                    </div>
                     <div class="theme-switcher">
                         <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
                             <span class="theme-icon">🌙</span>
@@ -49,11 +53,22 @@
                             </button>
                         </div>
                     </div>
-                    <a href="https://t.me/c/3279414960/838" class="btn-play" data-i18n="header.play">Грати зараз</a>
                 </div>
             </div>
         </div>
     </header>
+
+    <!-- Development Notice Banner -->
+    <div class="dev-notice" id="devNotice">
+        <div class="dev-notice-content">
+            <span class="dev-notice-icon">⚠️</span>
+            <div class="dev-notice-text">
+                <strong data-i18n="notice.title">Гра в розробці!</strong>
+                <span data-i18n="notice.text">Ми активно працюємо над грою. Запуск незабаром!</span>
+            </div>
+            <button class="dev-notice-close" id="closeNotice" aria-label="Close">✕</button>
+        </div>
+    </div>
 
     <main>
         <section class="hero" id="home">
@@ -69,9 +84,10 @@
                         Будуй вежі, покращуй захист та стань легендою!
                     </p>
                     <div class="hero-buttons">
-                        <a href="https://www.roblox.com" class="btn btn-primary">
+                        <button class="btn btn-primary btn-disabled" disabled>
                             <span data-i18n="hero.playBtn">🎮 Почати гру</span>
-                        </a>
+                            <span class="btn-soon-label" data-i18n="hero.soonLabel">Незабаром</span>
+                        </button>
                         <a href="#features" class="btn btn-secondary">
                             <span data-i18n="hero.learnBtn">Дізнатись більше</span>
                         </a>
@@ -273,10 +289,24 @@
             <div class="container">
                 <div class="cta-content">
                     <h2 class="cta-title" data-i18n="cta.title">Готовий почати битву?</h2>
-                    <p class="cta-text" data-i18n="cta.text">Приєднуйся до тисяч гравців та стань легендарним захисником!</p>
-                    <a href="https://t.me/c/3279414960/838" class="btn btn-primary btn-large">
-                        <span data-i18n="cta.button">🎮 Грати зараз на Roblox</span>
-                    </a>
+                    <p class="cta-text" data-i18n="cta.text">Гра активно розробляється. Слідкуй за оновленнями!</p>
+                    <button class="btn btn-primary btn-large btn-disabled" disabled>
+                        <span data-i18n="cta.button">🎮 Гра в розробці</span>
+                        <span class="btn-soon-label" data-i18n="cta.soonLabel">Скоро запуск</span>
+                    </button>
+                    <div class="cta-socials">
+                        <p class="cta-follow" data-i18n="cta.follow">Слідкуй за новинами:</p>
+                        <div class="social-links">
+                            <a href="https://t.me/c/3279414960/838" class="social-link" target="_blank">
+                                <span>💬</span>
+                                <span data-i18n="cta.telegram">Telegram</span>
+                            </a>
+                            <a href="#" class="social-link" target="_blank">
+                                <span>📱</span>
+                                <span data-i18n="cta.discord">Discord</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
