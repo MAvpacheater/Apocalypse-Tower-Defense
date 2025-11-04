@@ -59,6 +59,7 @@
   "gameplay": {
     "title": "Engaging Gameplay",
     "description": "Apocalypse Tower Defense is a strategy game where you defend your base from endless waves of zombies. Build towers, upgrade them and use tactics to win!",
+    "howToPlay": "How to Play",
     "list": {
       "item1": "✓ Over ?? unique levels",
       "item2": "✓ Different difficulty modes",
