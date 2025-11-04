@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     animateStats();
     initParallax();
     initRippleEffect();
+    initGameplaySlider();
     logInitialization();
 });
 
@@ -20,7 +21,6 @@ function initDevNotice() {
     
     if (!notice || !closeBtn) return;
 
-    // Check if notice was previously closed
     const noticeClosed = localStorage.getItem('devNoticeClosed');
     if (noticeClosed === 'true') {
         notice.classList.add('hidden');
@@ -31,7 +31,6 @@ function initDevNotice() {
         localStorage.setItem('devNoticeClosed', 'true');
     });
 
-    // Auto-fade after 10 seconds if not manually closed
     setTimeout(() => {
         if (!notice.classList.contains('hidden')) {
             notice.style.opacity = '0.7';
@@ -70,7 +69,6 @@ function initHeaderScroll() {
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
         
-        // Add shadow and change background when scrolled
         if (currentScroll > 100) {
             header.style.background = 'rgba(10, 14, 26, 0.95)';
             header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
@@ -96,7 +94,6 @@ function initScrollAnimations() {
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
                 
-                // Add delay for grid items
                 if (entry.target.classList.contains('feature-card')) {
                     const cards = document.querySelectorAll('.feature-card');
                     const index = Array.from(cards).indexOf(entry.target);
@@ -106,7 +103,6 @@ function initScrollAnimations() {
         });
     }, observerOptions);
 
-    // Observe elements
     const elementsToAnimate = document.querySelectorAll(
         '.feature-card, .gameplay-content, .stat-item, .section-header, .team-card'
     );
@@ -121,7 +117,6 @@ function initScrollAnimations() {
 
 // ===== MOBILE MENU =====
 function initMobileMenu() {
-    // Mobile menu toggle (if you add a hamburger button later)
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const nav = document.querySelector('.nav');
     
@@ -188,9 +183,52 @@ function initParallax() {
     });
 }
 
+// ===== GAMEPLAY SLIDER =====
+function initGameplaySlider() {
+    const slider = document.querySelector('.gameplay-slider');
+    if (!slider) return;
+
+    const images = slider.querySelectorAll('.slider-image');
+    const dots = slider.querySelectorAll('.dot');
+    const prevBtn = slider.querySelector('.slider-prev');
+    const nextBtn = slider.querySelector('.slider-next');
+    
+    let currentSlide = 0;
+    const totalSlides = images.length;
+
+    function showSlide(index) {
+        images.forEach(img => img.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        images[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentSlide = index;
+    }
+
+    function nextSlide() {
+        const next = (currentSlide + 1) % totalSlides;
+        showSlide(next);
+    }
+
+    function prevSlide() {
+        const prev = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(prev);
+    }
+
+    nextBtn?.addEventListener('click', nextSlide);
+    prevBtn?.addEventListener('click', prevSlide);
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => showSlide(index));
+    });
+
+    // Auto-slide every 5 seconds
+    setInterval(nextSlide, 5000);
+}
+
 // ===== BUTTON RIPPLE EFFECT =====
 function initRippleEffect() {
-    const buttons = document.querySelectorAll('.btn:not(.btn-disabled), .theme-btn, .lang-btn, .team-contact-btn, .social-link');
+    const buttons = document.querySelectorAll('.btn, .theme-btn, .lang-btn, .team-contact-btn, .social-link');
     
     buttons.forEach(button => {
         button.addEventListener('click', function(e) {
@@ -249,7 +287,7 @@ function logInitialization() {
     console.log('%cWebsite loaded successfully!', 'color: #22c55e; font-size: 14px;');
     console.log(`%cTheme: ${window.themeManager?.getCurrentTheme() || 'dark'}`, 'color: #9ca3af;');
     console.log(`%cLanguage: ${window.i18n?.getCurrentLanguage() || 'uk'}`, 'color: #9ca3af;');
-    console.log('%c⚠️ Game is in development mode', 'color: #f97316; font-size: 12px;');
+    console.log('%c🎮 Demo version available!', 'color: #22c55e; font-size: 12px;');
 }
 
 // ===== EASTER EGG =====
@@ -316,74 +354,11 @@ if ('performance' in window) {
     });
 }
 
-// ===== DISABLED BUTTONS TOOLTIP =====
-document.querySelectorAll('.btn-disabled').forEach(btn => {
-    btn.addEventListener('mouseenter', function() {
-        const tooltip = document.createElement('div');
-        tooltip.className = 'disabled-tooltip';
-        tooltip.textContent = window.i18n?.t('notice.text') || 'Game is in development!';
-        tooltip.style.cssText = `
-            position: absolute;
-            bottom: calc(100% + 10px);
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--color-bg-tertiary);
-            color: var(--color-text-primary);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.875rem;
-            white-space: nowrap;
-            border: 1px solid var(--color-border);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            pointer-events: none;
-            animation: fadeIn 0.2s ease;
-        `;
-        
-        this.style.position = 'relative';
-        this.appendChild(tooltip);
-    });
-    
-    btn.addEventListener('mouseleave', function() {
-        const tooltip = this.querySelector('.disabled-tooltip');
-        if (tooltip) {
-            tooltip.style.animation = 'fadeOut 0.2s ease';
-            setTimeout(() => tooltip.remove(), 200);
-        }
-    });
-});
-
-// Add tooltip animations
-const tooltipStyle = document.createElement('style');
-tooltipStyle.textContent = `
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateX(-50%) translateY(5px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-    }
-    
-    @keyframes fadeOut {
-        from {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-        to {
-            opacity: 0;
-            transform: translateX(-50%) translateY(5px);
-        }
-    }
-`;
-document.head.appendChild(tooltipStyle);
-
 // Export functions for external use
 window.app = {
     animateStats,
     initParallax,
     initSmoothScroll,
-    initDevNotice
+    initDevNotice,
+    initGameplaySlider
 };
