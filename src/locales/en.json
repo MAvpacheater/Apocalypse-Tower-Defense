@@ -9,18 +9,18 @@
   },
   "header": {
     "play": "Play Now",
-    "soon": "Soon"
+    "demo": "Demo"
   },
   "notice": {
-    "title": "Game in Development!",
-    "text": "We are actively working on the game. Launch coming soon!"
+    "title": "Demo Version Available!",
+    "text": "Try the demo version of the game now!"
   },
   "hero": {
     "title1": "TOWER DEFENSE",
     "title2": "Apocalypse",
     "description": "Defend your base from endless waves of zombies.<br>Build towers, upgrade defenses and become a legend!",
-    "playBtn": "🎮 Start Game",
-    "soonLabel": "Coming Soon",
+    "playBtn": "🎮 Play Demo",
+    "demoLabel": "Beta Version",
     "learnBtn": "Learn More",
     "stats": {
       "players": "Players",
@@ -165,9 +165,9 @@
   },
   "cta": {
     "title": "Ready to Start the Battle?",
-    "text": "The game is actively being developed. Stay tuned for updates!",
-    "button": "🎮 Game in Development",
-    "soonLabel": "Launch Soon",
+    "text": "Try the demo version now and experience the gameplay!",
+    "button": "🎮 Play Demo",
+    "demoLabel": "Beta Version",
     "follow": "Follow the news:",
     "telegram": "Telegram",
     "discord": "Discord"
