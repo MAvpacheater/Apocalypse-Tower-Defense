@@ -71,6 +71,7 @@
     "title": "Our Team",
     "subtitle": "Professionals creating the game",
     "contactBtn": "💬 Telegram",
+    "showAll": "👥 Show All Team Members",
     "recruitment": {
       "title": "We're Looking for Talent!",
       "text": "Join our team and help create the best tower defense game on Roblox! We're looking for: programmers, 3D modelers, designers, testers, and marketers.",
@@ -137,6 +138,7 @@
         "role": "Builder",
         "description": "Builds worlds and environments inside the game."
       }
+    }
   },
   "codes": {
     "title": "Promo Codes",
