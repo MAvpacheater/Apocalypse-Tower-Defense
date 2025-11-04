@@ -4,49 +4,49 @@
 const activeCodes = [
     {
         code: 'MrDep',
-        reward: '100 монет',
+        reward: '100 coins',
         icon: '💰',
         type: 'common'
     },
     {
         code: 'Darth',
-        reward: '100 монет',
+        reward: '100 coins',
         icon: '💰',
         type: 'common'
     },
     {
         code: 'Never',
-        reward: '150 монет',
+        reward: '150 coins',
         icon: '💎',
         type: 'rare'
     },
     {
         code: 'Jask_wantse',
-        reward: '100 монет',
+        reward: '100 coins',
         icon: '💰',
         type: 'common'
     },
     {
         code: 'AdminArbuz',
-        reward: '200 монет',
+        reward: '200 coins',
         icon: '💎',
         type: 'rare'
     },
     {
         code: 'Zoag',
-        reward: '350 монет',
+        reward: '350 coins',
         icon: '🏆',
         type: 'epic'
     },
     {
         code: 'T1Ran',
-        reward: '250 монет',
+        reward: '250 coins',
         icon: '💎',
         type: 'rare'
     },
     {
         code: 'Ferdinand',
-        reward: '75 монет',
+        reward: '75 coins',
         icon: '💰',
         type: 'common'
     },
@@ -60,17 +60,14 @@ const activeCodes = [
 
 // Expired codes (example)
 const expiredCodes = [
-    'BETA2024',
-    'HALLOWEEN',
-    'XMAS2024'
 ];
 
 // Type badges configuration
 const typeBadges = {
-    common: { label: 'Звичайний', color: '#9ca3af' },
-    rare: { label: 'Рідкісний', color: '#3b82f6' },
-    epic: { label: 'Епічний', color: '#a855f7' },
-    legendary: { label: 'Легендарний', color: '#f59e0b' }
+    common: { label: 'Common', color: '#9ca3af' },
+    rare: { label: 'Rare', color: '#3b82f6' },
+    epic: { label: 'Epic', color: '#a855f7' },
+    legendary: { label: 'Legendary', color: '#f59e0b' }
 };
 
 // Initialize codes page
