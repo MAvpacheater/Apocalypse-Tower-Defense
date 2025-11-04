@@ -142,6 +142,11 @@
         "name": "T1Ran",
         "role": "Builder",
         "description": "Білдер. Будує світи гри"
+      },
+      "member14": {
+        "name": "@Kto_to_bibi",
+        "role": "Painter",
+        "description": "Художник. Малює світи та наповнює їх кольором і текстурою."
       }
     }
   },
