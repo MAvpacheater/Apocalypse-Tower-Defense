@@ -2,38 +2,38 @@
   "maps": [
     {
       "id": 1,
-      "name": "Abandoned City",
-      "description": "Fight through the ruins of a once-thriving metropolis. Urban warfare at its finest with multiple elevation levels and strategic chokepoints.",
+      "nameKey": "maps.locations.abandonedCity.name",
+      "descriptionKey": "maps.locations.abandonedCity.description",
       "image": "../images/map1.jpg",
-      "difficulty": "Medium"
+      "difficulty": "medium"
     },
     {
       "id": 2,
-      "name": "Desert Outpost",
-      "description": "Defend your position in the scorching desert. Open terrain with limited cover requires careful tower placement.",
+      "nameKey": "maps.locations.desertOutpost.name",
+      "descriptionKey": "maps.locations.desertOutpost.description",
       "image": "../images/map2.jpg",
-      "difficulty": "Hard"
+      "difficulty": "hard"
     },
     {
       "id": 3,
-      "name": "Frozen Wasteland",
-      "description": "Survive the harsh winter conditions. Ice and snow slow down zombies but also affect tower performance.",
+      "nameKey": "maps.locations.frozenWasteland.name",
+      "descriptionKey": "maps.locations.frozenWasteland.description",
       "image": "../images/map3.jpg",
-      "difficulty": "Easy"
+      "difficulty": "easy"
     },
     {
       "id": 4,
-      "name": "Military Base",
-      "description": "Use the fortified military installation to your advantage. Pre-built defenses and strategic positions.",
+      "nameKey": "maps.locations.militaryBase.name",
+      "descriptionKey": "maps.locations.militaryBase.description",
       "image": "../images/map4.jpg",
-      "difficulty": "Medium"
+      "difficulty": "medium"
     },
     {
       "id": 5,
-      "name": "Underground Tunnels",
-      "description": "Navigate the dark underground maze. Limited visibility and multiple entry points make this map challenging.",
+      "nameKey": "maps.locations.undergroundTunnels.name",
+      "descriptionKey": "maps.locations.undergroundTunnels.description",
       "image": "../images/map5.jpg",
-      "difficulty": "Very Hard"
+      "difficulty": "veryHard"
     }
   ]
 }
