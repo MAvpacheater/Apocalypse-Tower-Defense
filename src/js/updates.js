@@ -1,13 +1,46 @@
-// src/js/updates.js - Updates Page Functionality
+// src/js/updates.js - Updates Page Functionality with i18n support
 
 let updates = [];
+let currentLang = 'en';
 
 // Initialize updates page
 document.addEventListener('DOMContentLoaded', async () => {
+    // Wait for i18n to be initialized
+    await waitForI18n();
+    currentLang = window.i18n ? window.i18n.getCurrentLanguage() : 'en';
+    
     await loadUpdatesFromJSON();
     renderUpdates();
     logInitialization();
+    
+    // Listen for language changes
+    document.addEventListener('languageChanged', () => {
+        currentLang = window.i18n ? window.i18n.getCurrentLanguage() : 'en';
+        renderUpdates();
+    });
 });
+
+// Wait for i18n to be ready
+function waitForI18n() {
+    return new Promise((resolve) => {
+        if (window.i18n && window.i18n.translations) {
+            resolve();
+        } else {
+            const checkInterval = setInterval(() => {
+                if (window.i18n && window.i18n.translations) {
+                    clearInterval(checkInterval);
+                    resolve();
+                }
+            }, 50);
+            
+            // Timeout after 3 seconds
+            setTimeout(() => {
+                clearInterval(checkInterval);
+                resolve();
+            }, 3000);
+        }
+    });
+}
 
 // Load updates from JSON file
 async function loadUpdatesFromJSON() {
@@ -22,6 +55,12 @@ async function loadUpdatesFromJSON() {
         console.error('Error loading updates:', error);
         updates = [];
     }
+}
+
+// Get translated text
+function getTranslatedText(textObj) {
+    if (typeof textObj === 'string') return textObj;
+    return textObj[currentLang] || textObj['en'] || '';
 }
 
 // Render updates timeline
@@ -40,7 +79,7 @@ function renderUpdates() {
     }
 
     timeline.innerHTML = updates.map((update, index) => {
-        const isNew = index === 0; // First update is marked as new
+        const isNew = index === 0;
         const badgeType = update.type || 'major';
         
         return `
@@ -50,12 +89,12 @@ function renderUpdates() {
                 </div>
                 <div class="update-card ${isNew ? 'new' : ''}">
                     <div class="update-header">
-                        <span class="update-date">${update.date}</span>
+                        <span class="update-date">${getTranslatedText(update.date)}</span>
                         <span class="update-badge ${badgeType}">${getBadgeText(badgeType)}</span>
                     </div>
                     <h3 class="update-version">${update.version}</h3>
-                    <h4 class="update-title">${update.title}</h4>
-                    <p class="update-description">${update.description}</p>
+                    <h4 class="update-title">${getTranslatedText(update.title)}</h4>
+                    <p class="update-description">${getTranslatedText(update.description)}</p>
                     ${renderChanges(update.changes)}
                 </div>
             </div>
@@ -69,44 +108,80 @@ function renderChanges(changes) {
 
     let html = '<div class="update-changes">';
 
-    if (changes.added && changes.added.length > 0) {
+    // Added
+    const addedItems = getTranslatedText(changes.added);
+    if (addedItems && addedItems.length > 0) {
         html += `
-            <h4>✨ Added</h4>
+            <h4>✨ ${getChangeTitle('added')}</h4>
             <ul>
-                ${changes.added.map(item => `<li class="change-added">${item}</li>`).join('')}
+                ${addedItems.map(item => `<li class="change-added">${item}</li>`).join('')}
             </ul>
         `;
     }
 
-    if (changes.improved && changes.improved.length > 0) {
+    // Improved
+    const improvedItems = getTranslatedText(changes.improved);
+    if (improvedItems && improvedItems.length > 0) {
         html += `
-            <h4>⚡ Improved</h4>
+            <h4>⚡ ${getChangeTitle('improved')}</h4>
             <ul>
-                ${changes.improved.map(item => `<li class="change-improved">${item}</li>`).join('')}
+                ${improvedItems.map(item => `<li class="change-improved">${item}</li>`).join('')}
             </ul>
         `;
     }
 
-    if (changes.fixed && changes.fixed.length > 0) {
+    // Fixed
+    const fixedItems = getTranslatedText(changes.fixed);
+    if (fixedItems && fixedItems.length > 0) {
         html += `
-            <h4>🔧 Fixed</h4>
+            <h4>🔧 ${getChangeTitle('fixed')}</h4>
             <ul>
-                ${changes.fixed.map(item => `<li class="change-fixed">${item}</li>`).join('')}
+                ${fixedItems.map(item => `<li class="change-fixed">${item}</li>`).join('')}
             </ul>
         `;
     }
 
-    if (changes.removed && changes.removed.length > 0) {
+    // Removed
+    const removedItems = getTranslatedText(changes.removed);
+    if (removedItems && removedItems.length > 0) {
         html += `
-            <h4>🗑️ Removed</h4>
+            <h4>🗑️ ${getChangeTitle('removed')}</h4>
             <ul>
-                ${changes.removed.map(item => `<li class="change-removed">${item}</li>`).join('')}
+                ${removedItems.map(item => `<li class="change-removed">${item}</li>`).join('')}
             </ul>
         `;
     }
 
     html += '</div>';
     return html;
+}
+
+// Get change section title
+function getChangeTitle(type) {
+    const titles = {
+        added: {
+            en: 'Added',
+            uk: 'Додано',
+            ru: 'Добавлено'
+        },
+        improved: {
+            en: 'Improved',
+            uk: 'Покращено',
+            ru: 'Улучшено'
+        },
+        fixed: {
+            en: 'Fixed',
+            uk: 'Виправлено',
+            ru: 'Исправлено'
+        },
+        removed: {
+            en: 'Removed',
+            uk: 'Видалено',
+            ru: 'Удалено'
+        }
+    };
+    
+    return titles[type][currentLang] || titles[type]['en'];
 }
 
 // Get icon for update type
@@ -122,22 +197,38 @@ function getUpdateIcon(type) {
 // Get badge text for update type
 function getBadgeText(type) {
     const texts = {
-        major: 'Major',
-        minor: 'Minor',
-        patch: 'Patch'
+        major: {
+            en: 'Major',
+            uk: 'Великий',
+            ru: 'Крупный'
+        },
+        minor: {
+            en: 'Minor',
+            uk: 'Малий',
+            ru: 'Малый'
+        },
+        patch: {
+            en: 'Patch',
+            uk: 'Патч',
+            ru: 'Патч'
+        }
     };
-    return texts[type] || 'Update';
+    
+    const typeTexts = texts[type] || texts['major'];
+    return typeTexts[currentLang] || typeTexts['en'];
 }
 
 // Log initialization
 function logInitialization() {
     console.log('%c📋 Updates Page Loaded', 'color: #22c55e; font-size: 14px; font-weight: bold;');
     console.log(`%cTotal updates: ${updates.length}`, 'color: #9ca3af;');
+    console.log(`%cLanguage: ${currentLang}`, 'color: #9ca3af;');
 }
 
 // Export for external use
 window.updatesManager = {
     updates,
     loadUpdatesFromJSON,
-    renderUpdates
+    renderUpdates,
+    currentLang
 };
