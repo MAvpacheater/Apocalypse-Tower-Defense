@@ -117,15 +117,54 @@ function initScrollAnimations() {
 
 // ===== MOBILE MENU =====
 function initMobileMenu() {
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const nav = document.querySelector('.nav');
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const nav = document.getElementById('mobileNav');
     
-    if (mobileMenuToggle && nav) {
-        mobileMenuToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            mobileMenuToggle.classList.toggle('active');
+    if (!mobileMenuToggle || !nav) return;
+
+    // Toggle menu
+    mobileMenuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        nav.classList.toggle('active');
+        mobileMenuToggle.classList.toggle('active');
+        
+        // Prevent body scroll when menu is open
+        if (nav.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close menu when clicking on a link
+    const navLinks = nav.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            mobileMenuToggle.classList.remove('active');
+            document.body.style.overflow = '';
         });
-    }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (nav.classList.contains('active') && 
+            !nav.contains(e.target) && 
+            !mobileMenuToggle.contains(e.target)) {
+            nav.classList.remove('active');
+            mobileMenuToggle.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close menu on window resize if going to desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 968 && nav.classList.contains('active')) {
+            nav.classList.remove('active');
+            mobileMenuToggle.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
 }
 
 // ===== STATS COUNTER ANIMATION =====
@@ -360,5 +399,6 @@ window.app = {
     initParallax,
     initSmoothScroll,
     initDevNotice,
-    initGameplaySlider
+    initGameplaySlider,
+    initMobileMenu
 };
