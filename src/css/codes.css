@@ -1,48 +1,6 @@
 /* ===== CODES PAGE STYLES ===== */
 
-.codes-page {
-    min-height: calc(100vh - 200px);
-    padding: 120px 0 60px;
-}
-
-.page-header {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.header-icon {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-.page-title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 900;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--color-accent), #f97316);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.page-subtitle {
-    font-size: 1.25rem;
-    color: var(--color-text-secondary);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* ===== INFO CARD ===== */
+/* --- INFO CARD --- */
 .codes-info {
     margin-bottom: 3rem;
 }
@@ -75,7 +33,7 @@
     line-height: 1.6;
 }
 
-/* ===== CODES GRID ===== */
+/* --- CODES GRID --- */
 .codes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -220,25 +178,11 @@
     font-size: 1.125rem;
 }
 
-/* ===== EXPIRED SECTION ===== */
+/* --- EXPIRED SECTION --- */
 .expired-section {
     margin-top: 4rem;
     padding-top: 3rem;
     border-top: 1px solid var(--color-border);
-}
-
-.section-title {
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-    text-align: center;
-}
-
-.section-subtitle {
-    font-size: 1rem;
-    color: var(--color-text-secondary);
-    text-align: center;
-    margin-bottom: 2rem;
 }
 
 .expired-codes {
@@ -264,7 +208,7 @@
     text-decoration: line-through;
 }
 
-/* ===== TOAST NOTIFICATION ===== */
+/* --- TOAST NOTIFICATION --- */
 .toast {
     position: fixed;
     bottom: 2rem;
@@ -295,55 +239,108 @@
     font-size: 1rem;
 }
 
-/* ===== ACTIVE NAV LINK ===== */
-.nav-link.active {
-    color: var(--color-accent);
-}
-
-.nav-link.active::after {
-    width: 100%;
-}
-
-/* ===== RESPONSIVE ===== */
+/* --- MOBILE RESPONSIVE --- */
 @media (max-width: 968px) {
-    .codes-page {
-        padding: 100px 0 40px;
-    }
-
     .codes-grid {
         grid-template-columns: 1fr;
     }
 
     .expired-codes {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .info-card {
         flex-direction: column;
         text-align: center;
+        padding: 1.75rem 1.5rem;
+        border-radius: 20px;
     }
 
-    .toast {
-        right: 1rem;
-        left: 1rem;
-        bottom: 1rem;
-    }
-}
-
-@media (max-width: 640px) {
-    .page-header {
-        margin-bottom: 2rem;
+    .info-icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.75rem;
     }
 
-    .codes-info {
-        margin-bottom: 2rem;
+    .info-text strong {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .info-text p {
+        font-size: 1.0625rem;
     }
 
     .code-card {
-        padding: 1.25rem;
+        padding: 1.75rem 1.5rem;
+        border-radius: 20px;
+        border-width: 2px;
+    }
+
+    .code-card::before {
+        height: 5px;
     }
 
     .code-name {
+        font-size: 1.5rem;
+    }
+
+    .code-badge {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    .code-reward {
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+    .reward-icon {
+        font-size: 2rem;
+    }
+
+    .reward-value {
         font-size: 1.25rem;
+    }
+
+    .btn-copy {
+        padding: 1rem 1.5rem;
+        font-size: 1.0625rem;
+        min-height: 54px;
+        border-radius: 12px;
+    }
+
+    .btn-copy .icon {
+        font-size: 1.25rem;
+    }
+
+    .expired-code {
+        padding: 1.25rem 1rem;
+        border-radius: 14px;
+    }
+
+    .expired-code-name {
+        font-size: 1.125rem;
+    }
+
+    .toast {
+        right: 1.5rem;
+        left: 1.5rem;
+        bottom: 1.5rem;
+        padding: 1.25rem 1.75rem;
+        border-radius: 16px;
+    }
+
+    .toast-icon {
+        font-size: 1.75rem;
+    }
+
+    .toast-text {
+        font-size: 1.0625rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .code-card {
+        padding: 1.5rem 1.25rem;
     }
 }
