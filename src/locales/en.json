@@ -5,7 +5,9 @@
     "features": "Features",
     "gameplay": "Gameplay",
     "team": "Team",
-    "codes": "Codes"
+    "codes": "Codes",
+    "maps": "Maps",
+    "updates": "Updates"
   },
   "header": {
     "play": "Play Now",
@@ -68,6 +70,14 @@
     },
     "placeholder": "Gameplay"
   },
+  "maps": {
+    "title": "Game Maps",
+    "subtitle": "Explore all available battle locations"
+  },
+  "updates": {
+    "title": "Game Updates",
+    "subtitle": "Latest news and changes"
+  }
   "team": {
     "title": "Our Team",
     "subtitle": "Professionals creating the game",
