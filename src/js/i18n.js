@@ -1,4 +1,4 @@
-// src/js/i18n.js - Internationalization System with JSON loading
+// src/js/i18n.js - Internationalization System with JSON loading and events
 
 class I18n {
     constructor() {
@@ -79,6 +79,12 @@ class I18n {
         this.setStoredLanguage(lang);
         this.applyLanguage(lang);
         this.updateLanguageButton(lang);
+        
+        // Dispatch custom event for language change
+        const event = new CustomEvent('languageChanged', { 
+            detail: { language: lang } 
+        });
+        document.dispatchEvent(event);
     }
 
     applyLanguage(lang) {
