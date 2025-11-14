@@ -94,11 +94,11 @@
         "description": ""
       },
       "frozenWasteland": {
-        "name": "-",
+        "name": "New city",
         "description": "-"
       },
       "militaryBase": {
-        "name": "-",
+        "name": "Forest",
         "description": "-"
       },
       "undergroundTunnels": {
